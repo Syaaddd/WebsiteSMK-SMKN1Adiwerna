@@ -1,0 +1,159 @@
+/* Custom animations and styles */
+
+/* Marquee ticker */
+@keyframes ticker-scroll {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+.ticker-track {
+    display: flex;
+    white-space: nowrap;
+    animation: ticker-scroll 30s linear infinite;
+}
+.ticker-track:hover { animation-play-state: paused; }
+
+/* Section title accent bar */
+.section-title {
+    position: relative;
+    padding-left: 14px;
+}
+.section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 70%;
+    background: #f97316;
+    border-radius: 2px;
+}
+
+/* Card hover lift */
+.card-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+/* Gradient overlay for hero images */
+.img-overlay {
+    position: relative;
+    overflow: hidden;
+}
+.img-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(249,115,22,0.15), rgba(28,25,23,0.4));
+}
+
+/* Orange gradient text */
+.gradient-text {
+    background: linear-gradient(135deg, #f97316, #fb923c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Navbar scroll effect */
+#navbar {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+#navbar.scrolled {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f5f5f4; }
+::-webkit-scrollbar-thumb { background: #f97316; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #c2410c; }
+
+/* Form inputs */
+.form-input {
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    border: 1.5px solid #d4d4d4;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    color: #3f3f3f;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+.form-input:focus {
+    border-color: #f97316;
+    box-shadow: 0 0 0 3px rgba(249,115,22,0.1);
+}
+
+/* Badge styles */
+.badge {
+    display: inline-block;
+    padding: 0.15rem 0.55rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+.badge-orange { background: #fed7aa; color: #c2410c; }
+.badge-blue   { background: #bfdbfe; color: #1d4ed8; }
+.badge-green  { background: #d1fae5; color: #065f46; }
+.badge-gray   { background: #e5e5e5; color: #525252; }
+
+/* Stat counter animation */
+@keyframes countup {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.stat-item { animation: countup 0.6s ease forwards; }
+
+/* Mobile menu transition */
+#mobile-menu {
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+#mobile-menu.open {
+    max-height: 500px;
+    opacity: 1;
+}
+
+/* Hero geometric bg */
+.hero-bg-pattern {
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(249,115,22,0.06) 0%, transparent 60%),
+        radial-gradient(circle at 80% 20%, rgba(249,115,22,0.04) 0%, transparent 50%);
+}
+
+/* Program keahlian icon bg variants */
+.icon-tkj  { background: #fed7aa; }
+.icon-rpl  { background: #bfdbfe; }
+.icon-akl  { background: #d1fae5; }
+.icon-mm   { background: #ede9fe; }
+.icon-otkp { background: #fef3c7; }
+.icon-bdp  { background: #fce7f3; }
+.icon-tb   { background: #e0f2fe; }
+.icon-tpm  { background: #ecfdf5; }
+
+/* Timeline connector */
+.timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 44px;
+    bottom: -8px;
+    width: 2px;
+    background: #e5e5e5;
+}
+
+/* Pulse animation for live badge */
+@keyframes pulse-orange {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(249,115,22,0); }
+}
+.pulse-dot { animation: pulse-orange 2s infinite; }

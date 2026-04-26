@@ -1,0 +1,323 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@700;800&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --orange: #F97316;
+    --orange-dark: #C2410C;
+    --orange-light: #FED7AA;
+    --gray-900: #1C1917;
+    --gray-700: #3F3F3F;
+    --gray-500: #737373;
+    --gray-300: #D4D4D4;
+    --gray-100: #F5F5F4;
+    --white: #FFFFFF;
+  }
+  .wrap { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; color: var(--gray-700); }
+
+  /* NAVBAR */
+  .nav { background: var(--gray-900); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 52px; border-radius: 10px 10px 0 0; }
+  .nav-logo { display: flex; align-items: center; gap: 8px; }
+  .nav-logo-icon { width: 32px; height: 32px; background: var(--orange); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 13px; color: white; }
+  .nav-logo-text { color: white; font-weight: 700; font-size: 13px; line-height: 1.2; }
+  .nav-logo-sub { color: var(--gray-300); font-size: 10px; font-weight: 400; }
+  .nav-links { display: flex; gap: 20px; }
+  .nav-link { color: var(--gray-300); font-size: 12px; cursor: pointer; }
+  .nav-link.active { color: var(--orange); }
+  .nav-cta { background: var(--orange); color: white; border: none; border-radius: 6px; padding: 6px 14px; font-size: 11px; font-weight: 600; cursor: pointer; }
+
+  /* HERO */
+  .hero { background: var(--gray-900); position: relative; overflow: hidden; padding: 40px 24px 36px; }
+  .hero-bg-circle { position: absolute; top: -30px; right: -40px; width: 200px; height: 200px; border-radius: 50%; background: var(--orange); opacity: 0.08; }
+  .hero-bg-line { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, var(--orange), transparent); }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(249,115,22,0.15); border: 1px solid rgba(249,115,22,0.3); border-radius: 20px; padding: 4px 12px; margin-bottom: 14px; }
+  .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+  .hero-badge-text { color: var(--orange); font-size: 11px; font-weight: 500; }
+  .hero h1 { font-family: 'Sora', sans-serif; font-size: 28px; font-weight: 800; color: white; line-height: 1.2; max-width: 360px; }
+  .hero h1 span { color: var(--orange); }
+  .hero-desc { color: var(--gray-300); font-size: 12px; line-height: 1.6; margin: 12px 0 20px; max-width: 340px; }
+  .hero-btns { display: flex; gap: 10px; }
+  .btn-primary { background: var(--orange); color: white; border: none; border-radius: 8px; padding: 9px 18px; font-size: 12px; font-weight: 600; cursor: pointer; }
+  .btn-secondary { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 9px 18px; font-size: 12px; cursor: pointer; }
+  .hero-stats { display: flex; gap: 24px; margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .hero-stat-num { color: var(--orange); font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 800; }
+  .hero-stat-label { color: var(--gray-500); font-size: 10px; margin-top: 2px; }
+
+  /* ANNOUNCEMENT TICKER */
+  .ticker { background: var(--orange); padding: 8px 24px; display: flex; align-items: center; gap: 12px; overflow: hidden; }
+  .ticker-label { background: white; color: var(--orange-dark); font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; white-space: nowrap; }
+  .ticker-text { color: white; font-size: 11px; white-space: nowrap; }
+
+  /* MAIN CONTENT */
+  .main { background: var(--gray-100); padding: 24px; }
+
+  /* SECTION TITLE */
+  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .section-title { font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 700; color: var(--gray-900); display: flex; align-items: center; gap: 8px; }
+  .section-title::before { content: ''; display: block; width: 4px; height: 18px; background: var(--orange); border-radius: 2px; }
+  .section-link { color: var(--orange); font-size: 11px; cursor: pointer; }
+
+  /* NEWS GRID */
+  .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+  .news-card { background: white; border-radius: 10px; overflow: hidden; border: 1px solid var(--gray-300); }
+  .news-card-img { width: 100%; height: 80px; background: var(--gray-200); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--gray-500); }
+  .news-card-img.a { background: linear-gradient(135deg, #C2410C22, #F9731622); }
+  .news-card-img.b { background: linear-gradient(135deg, #3F3F3F22, #73737322); }
+  .news-card-img.c { background: linear-gradient(135deg, #F9731611, #FED7AA44); }
+  .news-card-img.d { background: linear-gradient(135deg, #1C191722, #3F3F3F22); }
+  .news-card-body { padding: 10px; }
+  .news-card-tag { display: inline-block; background: var(--orange-light); color: var(--orange-dark); font-size: 9px; font-weight: 600; padding: 2px 7px; border-radius: 4px; margin-bottom: 5px; }
+  .news-card-title { font-size: 11px; font-weight: 600; color: var(--gray-900); line-height: 1.4; }
+  .news-card-date { color: var(--gray-500); font-size: 10px; margin-top: 5px; }
+
+  /* PROGRAM JURUSAN */
+  .jurusan-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+  .jurusan-item { background: white; border-radius: 10px; border: 1px solid var(--gray-300); padding: 12px 14px; display: flex; align-items: center; gap: 12px; }
+  .jurusan-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .jurusan-icon.tkj { background: #FED7AA; }
+  .jurusan-icon.rpl { background: #BFDBFE; }
+  .jurusan-icon.ak { background: #D1FAE5; }
+  .jurusan-icon.mm { background: #EDE9FE; }
+  .jurusan-name { font-size: 12px; font-weight: 600; color: var(--gray-900); }
+  .jurusan-desc { font-size: 10px; color: var(--gray-500); margin-top: 2px; }
+  .jurusan-arrow { margin-left: auto; color: var(--orange); font-size: 14px; }
+
+  /* AGENDA */
+  .agenda-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+  .agenda-item { background: white; border-radius: 10px; border: 1px solid var(--gray-300); padding: 10px 14px; display: flex; align-items: flex-start; gap: 12px; }
+  .agenda-date { background: var(--gray-900); border-radius: 6px; padding: 6px 8px; text-align: center; min-width: 36px; }
+  .agenda-day { color: var(--orange); font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 800; line-height: 1; }
+  .agenda-month { color: var(--gray-300); font-size: 9px; }
+  .agenda-title { font-size: 12px; font-weight: 600; color: var(--gray-900); }
+  .agenda-loc { color: var(--gray-500); font-size: 10px; margin-top: 3px; }
+  .agenda-badge { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 9px; font-weight: 600; margin-top: 4px; }
+  .badge-orange { background: var(--orange-light); color: var(--orange-dark); }
+  .badge-gray { background: var(--gray-300); color: var(--gray-700); }
+
+  /* FOOTER */
+  .footer { background: var(--gray-900); padding: 20px 24px; }
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .footer-title { color: var(--orange); font-size: 11px; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .footer-link { color: var(--gray-300); font-size: 11px; display: block; margin-bottom: 5px; cursor: pointer; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 14px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { color: var(--gray-500); font-size: 10px; }
+  .footer-socials { display: flex; gap: 8px; }
+  .social-btn { width: 26px; height: 26px; border-radius: 6px; background: rgba(255,255,255,0.07); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+  .social-icon { width: 12px; height: 12px; background: var(--gray-300); border-radius: 2px; }
+</style>
+
+<div class="wrap">
+  <!-- NAVBAR -->
+  <div class="nav">
+    <div class="nav-logo">
+      <div class="nav-logo-icon">S1A</div>
+      <div>
+        <div class="nav-logo-text">SMKN 1 Adiwerna</div>
+        <div class="nav-logo-sub">Kabupaten Tegal, Jawa Tengah</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <span class="nav-link active">Beranda</span>
+      <span class="nav-link">Profil</span>
+      <span class="nav-link">Jurusan</span>
+      <span class="nav-link">Berita</span>
+      <span class="nav-link">PPDB</span>
+    </div>
+    <button class="nav-cta">Hubungi Kami</button>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg-circle"></div>
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span class="hero-badge-text">Akreditasi A — Sekolah Unggulan</span>
+    </div>
+    <h1>Membentuk <span>Generasi Terampil</span> & Berkarakter</h1>
+    <p class="hero-desc">SMK Negeri 1 Adiwerna hadir untuk mencetak lulusan kompeten, siap kerja, dan berdaya saing di era industri 4.0.</p>
+    <div class="hero-btns">
+      <button class="btn-primary">Daftar PPDB 2025</button>
+      <button class="btn-secondary">Lihat Jurusan</button>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">2.400+</div>
+        <div class="hero-stat-label">Total Siswa</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">120+</div>
+        <div class="hero-stat-label">Guru & Staff</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">8</div>
+        <div class="hero-stat-label">Program Keahlian</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">95%</div>
+        <div class="hero-stat-label">Tingkat Kelulusan</div>
+      </div>
+    </div>
+    <div class="hero-bg-line"></div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <span class="ticker-label">INFO TERBARU</span>
+    <span class="ticker-text">Pendaftaran PPDB 2025/2026 dibuka mulai 1 Mei 2025 &nbsp;•&nbsp; Pengumuman kelulusan siswa kelas XII telah tersedia &nbsp;•&nbsp; Lomba Kompetensi Siswa (LKS) tingkat Kab. Tegal &nbsp;•&nbsp; Jadwal UTS Semester Genap 2024/2025</span>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- BERITA -->
+    <div class="section-header">
+      <div class="section-title">Berita & Pengumuman</div>
+      <span class="section-link">Lihat Semua →</span>
+    </div>
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-card-img a"></div>
+        <div class="news-card-body">
+          <span class="news-card-tag">PPDB</span>
+          <div class="news-card-title">Pendaftaran PPDB Jalur Prestasi Dibuka</div>
+          <div class="news-card-date">20 Apr 2025</div>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-card-img b"></div>
+        <div class="news-card-body">
+          <span class="news-card-tag">Prestasi</span>
+          <div class="news-card-title">Siswa SMKN 1 Raih Juara LKS Nasional</div>
+          <div class="news-card-date">15 Apr 2025</div>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-card-img c"></div>
+        <div class="news-card-body">
+          <span class="news-card-tag">Kegiatan</span>
+          <div class="news-card-title">Kunjungan Industri Jurusan RPL ke Jakarta</div>
+          <div class="news-card-date">10 Apr 2025</div>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-card-img d"></div>
+        <div class="news-card-body">
+          <span class="news-card-tag">Akademik</span>
+          <div class="news-card-title">Jadwal UTS Semester Genap 2024/2025</div>
+          <div class="news-card-date">5 Apr 2025</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JURUSAN -->
+    <div class="section-header">
+      <div class="section-title">Program Keahlian</div>
+      <span class="section-link">Selengkapnya →</span>
+    </div>
+    <div class="jurusan-list">
+      <div class="jurusan-item">
+        <div class="jurusan-icon tkj">🖥</div>
+        <div>
+          <div class="jurusan-name">Teknik Komputer & Jaringan (TKJ)</div>
+          <div class="jurusan-desc">Infrastruktur jaringan, keamanan siber, server management</div>
+        </div>
+        <div class="jurusan-arrow">›</div>
+      </div>
+      <div class="jurusan-item">
+        <div class="jurusan-icon rpl">💻</div>
+        <div>
+          <div class="jurusan-name">Rekayasa Perangkat Lunak (RPL)</div>
+          <div class="jurusan-desc">Pengembangan aplikasi web, mobile, dan desktop</div>
+        </div>
+        <div class="jurusan-arrow">›</div>
+      </div>
+      <div class="jurusan-item">
+        <div class="jurusan-icon ak">📊</div>
+        <div>
+          <div class="jurusan-name">Akuntansi & Keuangan Lembaga</div>
+          <div class="jurusan-desc">Pembukuan, perpajakan, dan keuangan digital</div>
+        </div>
+        <div class="jurusan-arrow">›</div>
+      </div>
+      <div class="jurusan-item">
+        <div class="jurusan-icon mm">🎬</div>
+        <div>
+          <div class="jurusan-name">Multimedia (MM)</div>
+          <div class="jurusan-desc">Desain grafis, videografi, animasi 2D/3D</div>
+        </div>
+        <div class="jurusan-arrow">›</div>
+      </div>
+    </div>
+
+    <!-- AGENDA -->
+    <div class="section-header">
+      <div class="section-title">Agenda Sekolah</div>
+      <span class="section-link">Kalender →</span>
+    </div>
+    <div class="agenda-list">
+      <div class="agenda-item">
+        <div class="agenda-date">
+          <div class="agenda-day">01</div>
+          <div class="agenda-month">MEI</div>
+        </div>
+        <div>
+          <div class="agenda-title">Pembukaan Pendaftaran PPDB 2025/2026</div>
+          <div class="agenda-loc">📍 Online & Kantor Sekolah</div>
+          <span class="agenda-badge badge-orange">PPDB</span>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-date">
+          <div class="agenda-day">12</div>
+          <div class="agenda-month">MEI</div>
+        </div>
+        <div>
+          <div class="agenda-title">Ujian Tengah Semester Genap 2024/2025</div>
+          <div class="agenda-loc">📍 Semua Kelas</div>
+          <span class="agenda-badge badge-gray">Akademik</span>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-date">
+          <div class="agenda-day">20</div>
+          <div class="agenda-month">MEI</div>
+        </div>
+        <div>
+          <div class="agenda-title">Peringatan Hari Kebangkitan Nasional</div>
+          <div class="agenda-loc">📍 Lapangan Upacara</div>
+          <span class="agenda-badge badge-gray">Upacara</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-title">Navigasi</div>
+        <span class="footer-link">Beranda</span>
+        <span class="footer-link">Profil Sekolah</span>
+        <span class="footer-link">Program Keahlian</span>
+        <span class="footer-link">Berita & Pengumuman</span>
+        <span class="footer-link">PPDB Online</span>
+      </div>
+      <div>
+        <div class="footer-title">Kontak</div>
+        <span class="footer-link">📍 Jl. Dewi Sartika No.1, Adiwerna</span>
+        <span class="footer-link">📞 (0283) 444555</span>
+        <span class="footer-link">✉ info@smkn1adiwerna.sch.id</span>
+        <span class="footer-link">🌐 www.smkn1adiwerna.sch.id</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 SMKN 1 Adiwerna. Hak cipta dilindungi.</span>
+      <div class="footer-socials">
+        <div class="social-btn"><div class="social-icon" style="background:#4267B2; border-radius:50%;"></div></div>
+        <div class="social-btn"><div class="social-icon" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); border-radius:4px;"></div></div>
+        <div class="social-btn"><div class="social-icon" style="background:#FF0000; border-radius:3px;"></div></div>
+      </div>
+    </div>
+  </div>
+</div>

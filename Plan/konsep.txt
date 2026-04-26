@@ -1,0 +1,80 @@
+Saya akan buatkan konsep plan lengkap beserta mockup webdesign untuk website SMKN 1 Adiwerna dengan tema abu-abu dan oranye!Berikut adalah mockup visual dan konsep lengkap untuk website SMKN 1 Adiwerna! Sekarang saya jelaskan detail plan-nya:
+
+---
+
+## Konsep Plan Website SMKN 1 Adiwerna
+
+### Tema & Identitas Visual
+- **Warna utama:** Abu-abu gelap (`#1C1917`) untuk header, footer, navbar — memberi kesan profesional dan elegan
+- **Aksen:** Oranye (`#F97316`) untuk CTA, highlight, dan elemen penting — energik dan modern
+- **Latar konten:** Abu-abu muda (`#F5F5F4`) yang bersih dan nyaman dibaca
+
+---
+
+### Struktur Halaman (Sitemap)
+
+**Halaman Utama (Home)** — seperti mockup di atas, terdiri dari: Navbar → Hero Banner → Ticker Berita → Berita/Pengumuman → Program Keahlian → Agenda → Footer
+
+**Halaman lain yang perlu dibuat:**
+- `/profil` — Sejarah, Visi & Misi, Struktur Organisasi, Fasilitas
+- `/jurusan` — Daftar dan detail setiap program keahlian
+- `/berita` — Artikel, pengumuman, dan galeri
+- `/ppdb` — Form pendaftaran online, persyaratan, jadwal
+- `/guru` — Data tenaga pendidik
+- `/kontak` — Peta lokasi, form pesan
+
+---
+
+### Stack Teknologi (PHP + Tailwind CSS)
+
+**Backend (PHP):**
+- PHP 8.x native atau dengan framework **Laravel** (direkomendasikan)
+- Database: **MySQL** untuk berita, agenda, data siswa/guru
+- Admin panel: **Filament** (Laravel) atau custom admin sederhana
+- Autentikasi admin dengan session PHP
+
+**Frontend:**
+- **Tailwind CSS** via CDN (untuk prototyping) atau build dengan **Vite**
+- HTML templating dengan PHP include/require untuk header, navbar, footer
+- JavaScript vanilla untuk interaktivitas ringan (ticker, slider)
+
+**Struktur Folder PHP:**
+```
+smkn1adiwerna/
+├── public/
+│   ├── index.php
+│   ├── assets/ (css, js, images)
+├── includes/
+│   ├── header.php
+│   ├── navbar.php
+│   └── footer.php
+├── pages/
+│   ├── home.php
+│   ├── profil.php
+│   ├── jurusan.php
+│   ├── berita.php
+│   └── ppdb.php
+├── admin/
+│   └── (dashboard pengelolaan konten)
+└── config/
+    └── database.php
+```
+
+---
+
+### Fitur Utama yang Perlu Dikembangkan
+
+**Publik:**
+- Sistem berita & pengumuman dinamis (dari database)
+- Kalender agenda sekolah
+- Galeri foto/video kegiatan
+- Form pendaftaran PPDB online
+- Halaman profil jurusan lengkap
+
+**Admin Panel:**
+- Login admin dengan role (superadmin, operator)
+- CRUD berita, agenda, galeri
+- Manajemen data siswa & guru (opsional)
+- Laporan pendaftar PPDB
+
+---
